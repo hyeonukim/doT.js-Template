@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz Builder</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/questions.css">
+</head>
+<body>
+    <header>
+        <h1>Interactive Quiz Builder</h1>
+        <nav>
+            <button id="mc-btn" class="nav-btn active">Multiple Choice</button>
+            <button id="hotspot-btn" class="nav-btn">Image Hotspot</button>
+            <button id="drag-btn" class="nav-btn">Drag & Drop</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="quiz-container">
+            <!-- Questions will be dynamically inserted here -->
+        </section>
+        
+        <section id="controls">
+            <button id="new-question">New Question</button>
+            <button id="check-answer">Check Answer</button>
+            <button id="show-answer">Show Answer</button>
+        </section>
+        
+        <section id="feedback">
+            <!-- Feedback will appear here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>Front-End Practice Project - Quiz Builder</p>
+    </footer>
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dot/1.1.3/doT.min.js"></script>
+    
+    <!-- Templates -->
+    <script id="multiple-choice-template" type="text/template">
+        <div class="question-container" data-type="multiple-choice" data-id="{{=it.id}}">
+            <h2>{{=it.questionText}}</h2>
+            <div class="options-container">
+                {{~it.options :option:index}}
+                <div class="option">
+                    <input type="radio" id="option{{=index}}" name="question{{=it.id}}" value="{{=index}}">
+                    <label for="option{{=index}}">{{=option}}</label>
+                </div>
+                {{~}}
+            </div>
+        </div>
+    </script>
+    
+    <script id="hotspot-template" type="text/template">
+        <div class="question-container" data-type="hotspot" data-id="{{=it.id}}">
+            <h2>{{=it.questionText}}</h2>
+            <div class="svg-container">
+                <svg id="hotspot-svg-{{=it.id}}" viewBox="0 0 400 300" class="interactive-svg">
+                    {{=it.svgContent}}
+                    {{~it.hotspots :spot:index}}
+                    <circle class="hotspot" 
+                            cx="{{=spot.x}}" 
+                            cy="{{=spot.y}}" 
+                            r="10" 
+                            data-correct="{{=spot.correct}}"
+                            data-feedback="{{=spot.feedback}}">
+                    </circle>
+                    {{~}}
+                </svg>
+            </div>
+        </div>
+    </script>
+    
+    <script id="drag-drop-template" type="text/template">
+        <div class="question-container" data-type="drag-drop" data-id="{{=it.id}}">
+            <h2>{{=it.questionText}}</h2>
+            <div class="drag-container">
+                <div class="draggables">
+                    {{~it.draggables :item:index}}
+                    <div class="drag-item" draggable="true" data-id="{{=index}}">{{=item.text}}</div>
+                    {{~}}
+                </div>
+                <div class="drop-targets">
+                    {{~it.dropTargets :target:index}}
+                    <div class="drop-target" data-match="{{=target.match}}">
+                        <span class="target-label">{{=target.label}}</span>
+                    </div>
+                    {{~}}
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- App Scripts -->
+    <script src="js/svgHandler.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

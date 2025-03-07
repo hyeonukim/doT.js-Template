@@ -1,0 +1,177 @@
+/* Question Containers */
+.question-container {
+    margin-bottom: 20px;
+}
+
+.question-container h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Multiple Choice Questions */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.option:hover {
+    background-color: var(--hover-color);
+}
+
+.option input[type="radio"] {
+    margin-right: 10px;
+}
+
+.option.selected {
+    background-color: rgba(52, 152, 219, 0.1);
+    border-color: var(--primary-color);
+}
+
+.option.correct {
+    background-color: rgba(46, 204, 113, 0.1);
+    border-color: var(--correct-color);
+}
+
+.option.incorrect {
+    background-color: rgba(231, 76, 60, 0.1);
+    border-color: var(--incorrect-color);
+}
+
+/* Hotspot Questions */
+.svg-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.interactive-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hotspot {
+    fill: rgba(52, 152, 219, 0.5);
+    stroke: var(--primary-color);
+    stroke-width: 2;
+    cursor: pointer;
+    transition: fill 0.3s;
+}
+
+.hotspot:hover {
+    fill: rgba(52, 152, 219, 0.8);
+}
+
+.hotspot.selected {
+    fill: rgba(52, 152, 219, 0.9);
+    stroke-width: 3;
+}
+
+.hotspot.correct {
+    fill: rgba(46, 204, 113, 0.7);
+    stroke: var(--correct-color);
+}
+
+.hotspot.incorrect {
+    fill: rgba(231, 76, 60, 0.7);
+    stroke: var(--incorrect-color);
+}
+
+/* Drag and Drop Questions */
+.drag-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.draggables {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.drag-item {
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.drag-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.drag-item.dragging {
+    opacity: 0.5;
+}
+
+.drop-targets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.drop-target {
+    width: 150px;
+    height: 80px;
+    border: 2px dashed var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.drop-target.drag-over {
+    border-color: var(--primary-color);
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.drop-target.correct {
+    border-color: var(--correct-color);
+    background-color: rgba(46, 204, 113, 0.1);
+    border-style: solid;
+}
+
+.drop-target.incorrect {
+    border-color: var(--incorrect-color);
+    background-color: rgba(231, 76, 60, 0.1);
+    border-style: solid;
+}
+
+.target-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.dropped-item {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 3px;
+    width: 100%;
+    text-align: center;
+}
