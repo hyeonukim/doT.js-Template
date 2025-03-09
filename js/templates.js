@@ -23,7 +23,7 @@ const questionData = {
         {
             id: 'mc3',
             questionText: 'Which HTML tag is used to create a hyperlink?',
-            options: ['<link>', '<a>', '<href>', '<url>'],
+            options: ['link', 'a', 'href', 'url'],
             correctAnswer: 1
         }
     ],
